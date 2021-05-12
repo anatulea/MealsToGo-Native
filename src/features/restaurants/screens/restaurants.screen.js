@@ -1,7 +1,7 @@
 import React from "react";
 import { StatusBar, StyleSheet, SafeAreaView, View } from "react-native";
 import Search from "../../../components/Search";
-import { RestaurantInfo } from "../components/restaurant-info.component";
+import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 
 export const RestaurantsScreen = () => {
   return (
@@ -10,7 +10,7 @@ export const RestaurantsScreen = () => {
         <Search />
       </View>
       <View style={styles.list}>
-        <RestaurantInfo />
+        <RestaurantInfoCard />
       </View>
     </SafeAreaView>
   );
