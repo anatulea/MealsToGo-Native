@@ -6,10 +6,10 @@ import { SvgXml } from "react-native-svg";
 
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
+import { Spacer } from "../../../components/spacer/spacer.component";
 
 const RestaurantCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.ui.quaternary};
-  padding: ${(props) => props.theme.space[3]};
 `;
 
 const RestaurantCardCover = styled(Card.Cover)`
@@ -27,7 +27,7 @@ const Address = styled.Text`
   font-family: ${(props) => props.theme.fonts.body};
 `;
 const Info = styled.View`
-  padding: ${(props) => props.theme.space[3]};
+  padding: ${(props) => props.theme.space[0]};
 `;
 
 const Rating = styled.View`
@@ -66,7 +66,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
       <Card.Content>
         <Info>
           <Title>{name}</Title>
-          {/* <Section>
+          <Section>
             <Rating>
               {ratingArray.map(() => (
                 <SvgXml xml={star} width={20} height={20} />
@@ -78,12 +78,17 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
                   CLOSED TEMPORARILY
                 </Text>
               )}
-              <View style={{ paddingLeft: 16 }} />
-              {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
-              <View style={{ paddingLeft: 16 }} />
-              <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+              <Spacer position="left" size="large">
+                {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
+              </Spacer>
+              <Spacer position="left" size="large">
+                <Image
+                  style={{ width: 15, height: 15 }}
+                  source={{ uri: icon }}
+                />
+              </Spacer>
             </SectionEnd>
-          </Section> */}
+          </Section>
           <Address>{address}</Address>
         </Info>
       </Card.Content>
