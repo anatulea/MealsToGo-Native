@@ -41,7 +41,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
       <Card.Content>
         <Info>
           <Text variant="label">{name}</Text>
-          <Section>
+          {/* <Section>
             <Rating>
               {ratingArray.map(() => (
                 <SvgXml key={placeId} xml={star} width={20} height={20} />
@@ -58,7 +58,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
                 <Icon source={{ uri: icon }} />
               </Spacer>
             </SectionEnd>
-          </Section>
+          </Section> */}
           <Address>{address}</Address>
         </Info>
       </Card.Content>
