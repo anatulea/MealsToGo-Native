@@ -13,6 +13,7 @@ export const RestaurantsContextProvider = ({ children }) => {
 
   const retrieveRestaurants = () => {
     setIsLoading(true);
+
     setTimeout(() => {
       restaurantsRequest()
         .then(restaurantsTransform)
