@@ -10,8 +10,6 @@ export const LocationContextProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   const onSearch = (searchKeyword = "Antwerp") => {
-    console.log(`location`, location);
-
     setIsLoading(true);
     setKeyword(searchKeyword);
     if (!searchKeyword.length) {
