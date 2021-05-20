@@ -1,12 +1,15 @@
 import React, { useContext } from "react";
 import { FlatList, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
+import { ActivityIndicator, Colors } from "react-native-paper";
+
 import { SafeArea } from "../../../components/utility/safe-area-component";
 import { Search } from "../../../features/restaurants/components/search.component";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
+
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
-import { ActivityIndicator, Colors } from "react-native-paper";
+import { FavouritesContext } from "../../../services/favourites/favourites.context";
 
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -25,6 +28,7 @@ const LoadingContainer = styled.View`
 
 export const RestaurantsScreen = ({ navigation }) => {
   const { restaurants, isLoading, error } = useContext(RestaurantsContext);
+  const { favourites } = useContext(FavouritesContext);
 
   return (
     <SafeArea>
