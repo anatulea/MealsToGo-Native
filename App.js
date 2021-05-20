@@ -16,6 +16,7 @@ import { Navigation } from "./src/infrastructure/navigation/index";
 import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
 
 import * as firebase from "firebase";
+import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 // require("firebase/auth");
 
 // Initialize Firebase
@@ -33,21 +34,6 @@ if (!firebase.apps.length) {
 }
 
 export default function App() {
-  const [isAuthenticated, setAuthenticated] = useState(false);
-
-  useEffect(() => {
-    firebase.default
-      .auth()
-      .signInWithEmailAndPassword("anatulea@email.com", "anatulea")
-      .then((user) => {
-        console.log(`user`, user);
-        setAuthenticated(true);
-      })
-      .catch((e) => {
-        console.log(`error from firebase!!!!!!`, e);
-      });
-  }, []);
-
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,
   });
@@ -61,13 +47,15 @@ export default function App() {
     return (
       <>
         <ThemeProvider theme={theme}>
-          <FavouritesContextProvider>
-            <LocationContextProvider>
-              <RestaurantsContextProvider>
-                <Navigation />
-              </RestaurantsContextProvider>
-            </LocationContextProvider>
-          </FavouritesContextProvider>
+          <AuthenticationContextProvider>
+            <FavouritesContextProvider>
+              <LocationContextProvider>
+                <RestaurantsContextProvider>
+                  <Navigation />
+                </RestaurantsContextProvider>
+              </LocationContextProvider>
+            </FavouritesContextProvider>
+          </AuthenticationContextProvider>
         </ThemeProvider>
         <ExpoStatusBar style="auto" />
       </>

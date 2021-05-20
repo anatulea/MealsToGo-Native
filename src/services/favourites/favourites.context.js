@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { color } from "react-native-reanimated";
 
 export const FavouritesContext = createContext();
 
