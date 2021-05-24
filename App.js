@@ -2,7 +2,7 @@ import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import React from "react";
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrastructure/theme";
-
+import * as firebase from "firebase";
 import AppLoading from "expo-app-loading";
 import {
   useFonts as useOswald,
@@ -10,12 +10,8 @@ import {
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 
-import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
-import { LocationContextProvider } from "./src/services/location/location.context";
 import { Navigation } from "./src/infrastructure/navigation/index";
-import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
 
-import * as firebase from "firebase";
 import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 // require("firebase/auth");
 
@@ -48,13 +44,7 @@ export default function App() {
       <>
         <ThemeProvider theme={theme}>
           <AuthenticationContextProvider>
-            <FavouritesContextProvider>
-              <LocationContextProvider>
-                <RestaurantsContextProvider>
-                  <Navigation />
-                </RestaurantsContextProvider>
-              </LocationContextProvider>
-            </FavouritesContextProvider>
+            <Navigation />
           </AuthenticationContextProvider>
         </ThemeProvider>
         <ExpoStatusBar style="auto" />
