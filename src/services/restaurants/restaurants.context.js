@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  createContext,
-  useEffect,
-  useMemo,
-  useContext,
-} from "react";
+import React, { useState, createContext, useEffect, useContext } from "react";
 import {
   restaurantsRequest,
   restaurantsTransform,
@@ -26,10 +20,12 @@ export const RestaurantsContextProvider = ({ children }) => {
     restaurantsRequest(loc)
       .then(restaurantsTransform)
       .then((results) => {
+        setError(null);
         setIsLoading(false);
         setRestaurants(results);
       })
       .catch((err) => {
+        setRestaurants([]);
         setIsLoading(false);
         setError(err);
       });
