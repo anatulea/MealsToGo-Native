@@ -8,6 +8,7 @@ export const locationRequest = (searchTerm) => {
 };
 export const locationTransform = (result) => {
   const formattedResult = camelize(result);
+  console.log(`result`, result);
   const { geometry = {} } = formattedResult.results[0];
   const { lat, lng } = geometry.location;
 
